@@ -38,11 +38,11 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Ellipse x:Name="PanelAlarm"  Margin="588,77,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
-        <Ellipse x:Name="PowerAlarm"  Margin="731,72,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
-        <Ellipse x:Name="PowerAlarm_Copy"  Margin="732,163,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
-        <Ellipse x:Name="PowerAlarm_Copy1"  Margin="732,260,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
-        <Ellipse x:Name="PowerAlarm_Copy2"  Margin="732,353,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
+        <Ellipse x:Name="PanelAlarmEll"  Margin="588,77,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
+        <Ellipse x:Name="PowerEll"  Margin="732,72,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
+        <Ellipse x:Name="SensorEll"  Margin="732,163,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
+        <Ellipse x:Name="NetworkEll"  Margin="732,260,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
+        <Ellipse x:Name="AlarmEll"  Margin="732,353,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
         <Button x:Name="TestButton" Content="ТЕСТ" BorderThickness="3" Margin="579,259,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="82" Height="56" VerticalAlignment="Top">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
