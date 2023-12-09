@@ -5,10 +5,51 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SAS.Forms"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="589" d:DesignWidth="1130"
       Title="Panel">
 
-    <Grid>
-        
+    <Grid Background="Gray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="ПУ" Margin="10,10,0,10" HorizontalAlignment="Left" Width="675">
+            <StackPanel/>
+        </GroupBox>
+        <GroupBox Header="ПКП" Margin="690,10,0,10" HorizontalAlignment="Left" Width="430"/>
+        <GroupBox Header="Коды комнат" Margin="19,0,0,20" HorizontalAlignment="Left" Width="655" Height="92" VerticalAlignment="Bottom">
+            <Label Content="Комната 317 - Код комнаты: 1004&#xD;&#xA;Комната 205 - Код комнаты: 103&#xD;&#xA;Комната 105 - Код комнаты: 8543" HorizontalAlignment="Left" Height="58" Width="617" Margin="19,0,0,0"/>
+        </GroupBox>
+
+        <GroupBox Header="Панель ввода кода сигнализации" Margin="19,229,0,0" HorizontalAlignment="Left" Width="369" Height="189" VerticalAlignment="Top"/>
+
+
+        <Button x:Name="OnOffAlarmButton" Content="ВКЛ" BorderThickness="3" Margin="0,259,579,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="InputCodeButton_Click" HorizontalAlignment="Right" Width="82" Height="56" VerticalAlignment="Top">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="InputCodeButton" Content="Ввести код" BorderThickness="3" Margin="0,353,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Center" Width="192" RenderTransformOrigin="0.516,-0.533" Height="55" VerticalAlignment="Top" Click="OnOffAlarmButton_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Ellipse Margin="588,77,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
+        <Button x:Name="TestButton_Copy" Content="ТЕСТ" BorderThickness="3" Margin="579,259,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="82" Height="56" VerticalAlignment="Top">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <GroupBox Header="Панель вывода информации о состоянии сигнализации" Margin="19,39,0,0" Height="134" VerticalAlignment="Top" HorizontalAlignment="Left" Width="655"/>
+        <Label Content="Для того, чтобы начать управлять сигнализацией &#xD;&#xA;в комнате, введите ее четырехзначный код в окно &#xD;&#xA;ниже и нажмите на кнопку &quot;ввести код&quot;." HorizontalAlignment="Left" Height="58" Width="332" Margin="44,266,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="CodeInputTextBox" HorizontalAlignment="Left" Margin="44,335,0,0" TextWrapping="Wrap" Text="" FontSize="30" Width="319" Height="50" VerticalAlignment="Top" TextChanged="CodeInputTextBox_TextChanged"/>
+        <Label x:Name="WrongInputLabel" HorizontalAlignment="Left" Foreground="Red" Width="332" Margin="44,385,0,0" Height="23" VerticalAlignment="Top"/>
+
     </Grid>
 </Page>
