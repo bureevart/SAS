@@ -105,5 +105,12 @@ namespace SAS.Forms
             else
                 AlarmEll.Fill = Brushes.White;
         }
+
+        private void SetAlarmButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentRoom == null) { return; }
+
+            currentRoom.SensorStatus = 1;
+        }
     }
 }

@@ -70,7 +70,7 @@
             <Label Content="Код комнаты: #### - Состояние: ####" Background="DarkBlue" BorderBrush="White" BorderThickness="3" Foreground="Yellow" FontSize="20" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="75" Margin="44,72,0,0" VerticalAlignment="Top" Width="521"/>
         </Grid>
         <Label x:Name="WrongInputLabel" HorizontalAlignment="Left" Foreground="Red" Width="332" Margin="44,385,0,0" Height="23" VerticalAlignment="Top"/>
-        <Button x:Name="TestButtonss" Content="Поставить на сигнализацию" BorderThickness="3" Margin="728,448,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="354" Height="70" VerticalAlignment="Top">
+        <Button x:Name="SetAlarmButton" Content="Поставить на сигнализацию" BorderThickness="3" Margin="728,448,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="354" Height="70" VerticalAlignment="Top" Click="SetAlarmButton_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
