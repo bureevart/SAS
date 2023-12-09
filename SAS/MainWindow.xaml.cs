@@ -24,9 +24,25 @@ namespace SAS
         {
             InitializeComponent();
         }
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+
+        private void OnExitButtonClick(object sender, RoutedEventArgs e)
+        {
+            MainForm.Close();
+        }
+
+        private void OnSettingsButtonClick(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void OnHistoryButtonClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OnPanelButtonClick(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
