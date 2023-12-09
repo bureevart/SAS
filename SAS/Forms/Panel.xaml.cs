@@ -44,8 +44,14 @@ namespace SAS.Forms
 
         private void CodeInputTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            var textBox = sender as TextBox;
+            int number;
+
             if (WrongInputLabel == null) return;
             WrongInputLabel.Content = string.Empty;
+            if (!int.TryParse(textBox.Text, out number)){
+                WrongInputLabel.Content = "Пожалуйста введите число!";
+            }
         }
 
         private void InputCodeButton_Click(object sender, RoutedEventArgs e)
