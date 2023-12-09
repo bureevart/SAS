@@ -9,11 +9,15 @@
 
   <ItemGroup>
     <None Remove="Images\exit_ic.png" />
+    <None Remove="Images\home_ic.png" />
     <None Remove="Images\set_ic.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Images\exit_ic.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\home_ic.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\set_ic.png">

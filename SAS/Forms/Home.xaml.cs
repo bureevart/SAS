@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SAS.Forms
 {
     /// <summary>
-    /// Interaction logic for Information.xaml
+    /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class Information : Page
+    public partial class Home : Page
     {
-        public Information()
+        public Home()
         {
             InitializeComponent();
         }

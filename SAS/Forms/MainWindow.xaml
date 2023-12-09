@@ -48,5 +48,13 @@
                 
             </Frame>
         </GroupBox>
+        <Button x:Name="HomeButton" BorderThickness="3" Margin="585,17,149,362" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnHomeButtonClick">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+            <Image Source="/images/home_ic.png"/>
+        </Button>
     </Grid>
 </Window>

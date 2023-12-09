@@ -24,6 +24,7 @@ namespace SAS
         public History HistoryPage = new History();
         public Settings SettingsPage = new Settings();
         public Forms.Panel PanelPage = new Forms.Panel();
+        public Home HomePage = new Home();
         public MainWindow()
         {
             InitializeComponent();
@@ -47,6 +48,11 @@ namespace SAS
         private void OnPanelButtonClick(object sender, RoutedEventArgs e)
         {
             Main.Content = PanelPage;
+        }
+
+        private void OnHomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            Main.Content = HomePage;
         }
     }
 }
