@@ -8,15 +8,51 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Home">
 
+    <Page.Resources>
+        <Style 
+            x:Key="CustomStyleFont" 
+            TargetType="TextBlock"> 
+            <Setter 
+                Property="FontFamily" 
+                Value="Times New Roman"
+            /> 
+            <Setter 
+                Property="FontSize" 
+                Value="20"
+            />
+            <Setter
+                Property="HorizontalAlignment"
+                Value="Center"
+            />
+        </Style>
+    </Page.Resources>
+
     <Grid>
         <Label HorizontalAlignment="Center" 
             VerticalAlignment="Center" >
-            <StackPanel HorizontalAlignment="Center">    
-                <TextBlock HorizontalAlignment="Center" Text="Добро пожаловать в приложение системы охранной сигнализации!"/>
-                <TextBlock HorizontalAlignment="Center" Text="Это приложение имитирует работу системы охранной сигнализации." />
-                <TextBlock HorizontalAlignment="Center" Text="Вы можете ставить на охрану, снимать с охраны, контролировать зоны системы и просматривать историю тревог."/>
-                <TextBlock HorizontalAlignment="Center" Text="Приложение создано в рамках лабораторной работы по дисциплине ПСРВ, студентом 4-го курса ЭАС Маровым Дмитрием."/>
-                <TextBlock HorizontalAlignment="Center" Text="УФА 2023" />
+            <StackPanel 
+            HorizontalAlignment="Center">    
+                <TextBlock
+                    Style="{StaticResource CustomStyleFont}"
+                    FontWeight="bold"
+                    Text="Добро пожаловать в приложение системы охранной сигнализации!"
+                />
+                <TextBlock 
+                    Style="{StaticResource CustomStyleFont}"
+                    Text="Это приложение имитирует работу системы охранной сигнализации." 
+                />
+                <TextBlock
+                    Style="{StaticResource CustomStyleFont}" 
+                    Text="Вы можете ставить на охрану, снимать с охраны, контролировать зоны системы и просматривать историю тревог."
+                />
+                <TextBlock 
+                    Style="{StaticResource CustomStyleFont}" 
+                    Text="Приложение создано в рамках лабораторной работы по дисциплине ПСРВ, студентом 4-го курса ЭАС Маровым Дмитрием."
+                />
+                <TextBlock 
+                    Style="{StaticResource CustomStyleFont}"
+                    Text="УФА 2023"
+                />
             </StackPanel>
         </Label>
     </Grid>

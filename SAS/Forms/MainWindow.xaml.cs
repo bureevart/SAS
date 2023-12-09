@@ -41,6 +41,7 @@ namespace SAS
 
         private void OnSettingsButtonClick(object sender, RoutedEventArgs e)
         {
+            
             Main.Content = SettingsPage;
         }
 
