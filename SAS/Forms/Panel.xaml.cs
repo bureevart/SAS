@@ -30,20 +30,26 @@ namespace SAS.Forms
         }
 
 
-        private void OnOffAlarmButton_Click(object sender, RoutedEventArgs e)
+        private void OnInputCodeButton(object sender, RoutedEventArgs e)
         {
             WrongInputLabel.Content = string.Empty;
             var codestr = CodeInputTextBox.Text;
 
             if (codestr == string.Empty) { return; }
-
             if (int.TryParse(codestr, out var input))
             {
-                
+                foreach (var room in Rooms)
+                {
+                    if (room.code == input)
+                    {
+                        currentRoom = room;
+                        break;
+                    }
+                }
             }
-            else
+            if (currentRoom != null)
             {
-                WrongInputLabel.Content = "Введите корректный код!";
+
             }
         }
 
@@ -59,26 +65,9 @@ namespace SAS.Forms
             }
         }
 
-        private void InputCodeButton_Click(object sender, RoutedEventArgs e)
+        private void OnOffAlarmButton_Click(object sender, RoutedEventArgs e)
         {
-            WrongInputLabel.Content = string.Empty;
-            var codestr = CodeInputTextBox.Text;
-            if (codestr == string.Empty) { return; }
-            int input;
-            if (int.TryParse(codestr, out input)){
-                foreach (var room in Rooms){
-                    if (room.code == input)
-                    {
-                        currentRoom = room;
-                        break;
-                    }
-                }
-            }
-            if (currentRoom != null)
-            {
 
-            }
-            
         }
     }
 }
