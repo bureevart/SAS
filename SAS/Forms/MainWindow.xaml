@@ -9,7 +9,6 @@
         ResizeMode="NoResize"
         Title="Система охранной сигнализации" Height="450" Width="800" Background="Gray">
     <Grid Margin="10,0,0,0">
-        <!--<Border BorderBrush="Black" BorderThickness="1" Height="NaN" Margin="0,0,0,344" Width="NaN"/>-->
         <GroupBox Header="МЕНЮ" Margin="-9,0,0,350"/>
         <GroupBox Header="ИНФОРМАЦИЯ" Margin="-9,84,0,8"/>
         <Button x:Name="PanelButton" Content="Панель управления" BorderThickness="3" Margin="10,17,533,362" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnPanelButtonClick">
@@ -21,7 +20,7 @@
         </Button>
         <Button x:Name="ExitButton" BorderThickness="3" Margin="707,17,27,362" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnExitButtonClick">
             <Button.Content>
-                <Image Source="Images\exit_ic.png" Height="45"/>
+                <Image Source="/images/exit_ic.png" Height="45"/>
             </Button.Content>
             
             <Button.Resources>
