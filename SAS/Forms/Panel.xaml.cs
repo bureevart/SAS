@@ -81,10 +81,29 @@ namespace SAS.Forms
         private async void DispatcherTimer_Tick(object? sender, EventArgs e)
         {
             if(currentRoom == null) { return; }
-            if(currentRoom.AlarmStatus)
-                AlarmEll.Fill = Brushes.Gray;
-            else
+            switch (currentRoom.SensorStatus)
+            {
+                case 0:
+                    SensorEll.Fill = Brushes.White;
+                    break;
+                case 1:
+                    SensorEll.Fill = Brushes.Green;
+                    break;
+                case 2:
+                    SensorEll.Fill = Brushes.Red;
+                    break;
+            }
+            if(currentRoom.PowerStatus) 
+                PowerEll.Fill = Brushes.Green;
+            else 
+                PowerEll.Fill = Brushes.Red;
+            if(currentRoom.NetworkStatus)
+                NetworkEll.Fill = Brushes.Red;
+            else NetworkEll.Fill = Brushes.Green;
+            if (currentRoom.AlarmStatus)
                 AlarmEll.Fill = Brushes.Red;
+            else
+                AlarmEll.Fill = Brushes.White;
         }
     }
 }

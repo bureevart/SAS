@@ -16,4 +16,5 @@ public class Room {
         this.AlarmStatus = AlarmStatus;
         this.NetworkStatus = NetworkStatus;
     }
+    
 }
