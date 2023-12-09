@@ -30,7 +30,7 @@ namespace SAS
             InitializeComponent();
 
             SettingsPage = new Settings(this);
-            Main.Content = SettingsPage;
+            Main.Content = HomePage;
 
         }
 
