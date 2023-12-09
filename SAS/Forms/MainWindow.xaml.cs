@@ -28,6 +28,9 @@ namespace SAS
         public MainWindow()
         {
             InitializeComponent();
+
+            Main.Content = HomePage;
+
         }
 
         private void OnExitButtonClick(object sender, RoutedEventArgs e)
