@@ -20,9 +20,26 @@ namespace SAS.Forms
     /// </summary>
     public partial class Settings : Page
     {
-        public Settings()
+        MainWindow MainForm;
+        public Settings(MainWindow main)
         {
             InitializeComponent();
+            MainForm = main;
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox cb) 
+            {
+                if (cb.IsChecked == true)
+                {
+                    MainForm.Main.NavigationUIVisibility = NavigationUIVisibility.Visible;
+                }
+                else if (cb.IsChecked == false)
+                {
+                    MainForm.Main.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+                }
+            }
         }
     }
 }

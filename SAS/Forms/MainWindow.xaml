@@ -44,7 +44,7 @@
             </Button.Resources>
         </Button>
         <GroupBox Header="ИНФОРМАЦИЯ" Margin="-9,84,0,8">
-            <Frame x:Name="Main" NavigationUIVisibility="Hidden">
+            <Frame x:Name="Main" x:FieldModifier="public" NavigationUIVisibility="Hidden">
                 
             </Frame>
         </GroupBox>

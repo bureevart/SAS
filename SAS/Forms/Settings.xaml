@@ -9,6 +9,7 @@
       Title="Settings">
 
     <Grid>
-        
+        <CheckBox Content="Включить панель навигации" Margin="40,70,528,0" Click="CheckBox_Click" VerticalAlignment="Top"/>
+
     </Grid>
 </Page>

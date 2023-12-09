@@ -22,14 +22,15 @@ namespace SAS
     public partial class MainWindow : Window
     {
         public History HistoryPage = new History();
-        public Settings SettingsPage = new Settings();
+        public Settings SettingsPage;
         public Forms.Panel PanelPage = new Forms.Panel();
         public Home HomePage = new Home();
         public MainWindow()
         {
             InitializeComponent();
 
-            Main.Content = HomePage;
+            SettingsPage = new Settings(this);
+            Main.Content = SettingsPage;
 
         }
 
