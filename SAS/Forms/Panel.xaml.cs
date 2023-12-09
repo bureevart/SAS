@@ -25,7 +25,7 @@ namespace SAS.Forms
             InitializeComponent();
         }
 
-        private void OnOffAlarmButton_Click(object sender, RoutedEventArgs e)
+        private void OnInputCodeButton(object sender, RoutedEventArgs e)
         {
             WrongInputLabel.Content = string.Empty;
             var codestr = CodeInputTextBox.Text;
@@ -54,7 +54,7 @@ namespace SAS.Forms
             }
         }
 
-        private void InputCodeButton_Click(object sender, RoutedEventArgs e)
+        private void OnOffAlarmButton_Click(object sender, RoutedEventArgs e)
         {
 
         }

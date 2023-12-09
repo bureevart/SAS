@@ -23,7 +23,7 @@
         <GroupBox Header="Панель ввода кода сигнализации" Margin="19,229,0,0" HorizontalAlignment="Left" Width="369" Height="189" VerticalAlignment="Top"/>
 
 
-        <Button x:Name="OnOffAlarmButton" Content="ВКЛ" BorderThickness="3" Margin="0,259,579,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="InputCodeButton_Click" HorizontalAlignment="Right" Width="82" Height="56" VerticalAlignment="Top">
+        <Button x:Name="OnOffAlarmButton" Content="ВКЛ" BorderThickness="3" Margin="0,259,579,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnOffAlarmButton_Click" HorizontalAlignment="Right" Width="82" Height="56" VerticalAlignment="Top">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -31,15 +31,19 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="InputCodeButton" Content="Ввести код" BorderThickness="3" Margin="0,353,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Center" Width="192" RenderTransformOrigin="0.516,-0.533" Height="55" VerticalAlignment="Top" Click="OnOffAlarmButton_Click">
+        <Button x:Name="InputCodeButton" Content="Ввести код" BorderThickness="3" Margin="0,353,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Center" Width="192" RenderTransformOrigin="0.516,-0.533" Height="55" VerticalAlignment="Top" Click="OnInputCodeButton">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Ellipse Margin="588,77,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
-        <Button x:Name="TestButton_Copy" Content="ТЕСТ" BorderThickness="3" Margin="579,259,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="82" Height="56" VerticalAlignment="Top">
+        <Ellipse x:Name="PanelAlarm"  Margin="588,77,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
+        <Ellipse x:Name="PowerAlarm"  Margin="731,72,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
+        <Ellipse x:Name="PowerAlarm_Copy"  Margin="732,163,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
+        <Ellipse x:Name="PowerAlarm_Copy1"  Margin="732,260,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
+        <Ellipse x:Name="PowerAlarm_Copy2"  Margin="732,353,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
+        <Button x:Name="TestButton" Content="ТЕСТ" BorderThickness="3" Margin="579,259,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="82" Height="56" VerticalAlignment="Top">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -62,8 +66,20 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
+
+            <Label Content="Код комнаты: #### - Состояние: ####" Background="DarkBlue" BorderBrush="White" BorderThickness="3" Foreground="Yellow" FontSize="20" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="75" Margin="44,72,0,0" VerticalAlignment="Top" Width="521"/>
         </Grid>
         <Label x:Name="WrongInputLabel" HorizontalAlignment="Left" Foreground="Red" Width="332" Margin="44,385,0,0" Height="23" VerticalAlignment="Top"/>
-
+        <Button x:Name="TestButtonss" Content="Поставить на сигнализацию" BorderThickness="3" Margin="728,448,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="354" Height="70" VerticalAlignment="Top">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label Content="Питание" FontSize="20" HorizontalAlignment="Left" Width="124" Margin="804,84,0,0" Height="44" VerticalAlignment="Top"/>
+        <Label Content="Питание" FontSize="20" HorizontalAlignment="Left" Width="124" Margin="805,176,0,0" RenderTransformOrigin="0.484,1.496" Height="42" VerticalAlignment="Top"/>
+        <Label Content="Сеть" FontSize="20" HorizontalAlignment="Left" Width="124" Margin="805,274,0,0" RenderTransformOrigin="0.484,1.496" Height="42" VerticalAlignment="Top"/>
+        <Label Content="Тревога" FontSize="20" HorizontalAlignment="Left" Width="124" Margin="805,366,0,0" RenderTransformOrigin="0.484,1.496" Height="42" VerticalAlignment="Top"/>
     </Grid>
 </Page>
