@@ -20,10 +20,15 @@ namespace SAS.Forms
     /// </summary>
     public partial class Panel : Page
     {
+        
+        public static List<Room> Rooms = new List<Room>();
+        public static Room currentRoom;
+
         public Panel()
         {
             InitializeComponent();
         }
+
 
         private void OnOffAlarmButton_Click(object sender, RoutedEventArgs e)
         {
@@ -34,7 +39,7 @@ namespace SAS.Forms
 
             if (int.TryParse(codestr, out var input))
             {
-
+                
             }
             else
             {
@@ -56,7 +61,24 @@ namespace SAS.Forms
 
         private void InputCodeButton_Click(object sender, RoutedEventArgs e)
         {
+            WrongInputLabel.Content = string.Empty;
+            var codestr = CodeInputTextBox.Text;
+            if (codestr == string.Empty) { return; }
+            int input;
+            if (int.TryParse(codestr, out input)){
+                foreach (var room in Rooms){
+                    if (room.code == input)
+                    {
+                        currentRoom = room;
+                        break;
+                    }
+                }
+            }
+            if (currentRoom != null)
+            {
 
+            }
+            
         }
     }
 }
