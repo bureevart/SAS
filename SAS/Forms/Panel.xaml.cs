@@ -27,8 +27,11 @@ namespace SAS.Forms
         public Panel()
         {
             InitializeComponent();
-        }
 
+            Rooms.Add(new Room(1004, 0, true, false, false));
+            Rooms.Add(new Room(103, 0, true, false, false));
+            Rooms.Add(new Room(8543, 0, true, false, false));
+        }
 
         private void OnInputCodeButton(object sender, RoutedEventArgs e)
         {
@@ -40,7 +43,7 @@ namespace SAS.Forms
             {
                 foreach (var room in Rooms)
                 {
-                    if (room.code == input)
+                    if (room.Code == input)
                     {
                         currentRoom = room;
                         break;
