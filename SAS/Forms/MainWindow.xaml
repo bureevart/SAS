@@ -7,31 +7,28 @@
         xmlns:local="clr-namespace:SAS"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Система охранной сигнализации" Height="450" Width="800" Background="Gray">
+        Title="Система охранной сигнализации" Height="681" Width="1169" Background="Gray">
     <Grid Margin="10,0,0,0">
-        <GroupBox Header="МЕНЮ" Margin="-9,0,0,350"/>
-        <Button x:Name="PanelButton" Content="Панель управления" BorderThickness="3" Margin="10,17,533,362" BorderBrush="DarkGray" 
-        FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnPanelButtonClick" Cursor="Hand">
+        <GroupBox Header="МЕНЮ" Margin="-9,0,3,0" Height="84" VerticalAlignment="Top"/>
+        <Button x:Name="PanelButton" Content="Панель управления" BorderThickness="3" Margin="10,17,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnPanelButtonClick" HorizontalAlignment="Left" Width="247" Height="55" VerticalAlignment="Top">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="ExitButton" BorderThickness="3" Margin="707,17,27,362" BorderBrush="DarkGray" FontSize="20" 
-        FontFamily="Verdana" Foreground="Black" Click="OnExitButtonClick" Cursor="Hand">
+        <Button x:Name="ExitButton" BorderThickness="3" Margin="1078,17,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnExitButtonClick" Height="55" VerticalAlignment="Top" HorizontalAlignment="Left" Width="56">
             <Button.Content>
                 <Image Source="/images/exit_ic.png" Height="45"/>
             </Button.Content>
-            
+
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="SettingsButton" BorderThickness="3" Margin="646,17,88,362" BorderBrush="DarkGray" FontSize="20" 
-        FontFamily="Verdana" Foreground="Black" Click="OnSettingsButtonClick" Cursor="Hand">
+        <Button x:Name="SettingsButton" BorderThickness="3" Margin="1017,17,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnSettingsButtonClick" HorizontalAlignment="Left" Width="56" Height="55" VerticalAlignment="Top">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -39,21 +36,19 @@
             </Button.Resources>
             <Image Source="/images/set_ic.png"/>
         </Button>
-        <Button x:Name="HistoryButton" Content="Журнал событий" BorderThickness="3" Margin="262,17,281,362" BorderBrush="DarkGray" 
-        FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnHistoryButtonClick" Cursor="Help">
+        <Button x:Name="HistoryButton" Content="Журнал событий" BorderThickness="3" Margin="262,17,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnHistoryButtonClick" HorizontalAlignment="Left" Width="247" Height="55" VerticalAlignment="Top">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <GroupBox Header="ИНФОРМАЦИЯ" Margin="-9,84,0,8">
-            <Frame x:Name="Main" x:FieldModifier="public" NavigationUIVisibility="Hidden">
-                
+        <GroupBox Header="ИНФОРМАЦИЯ" Margin="-9,84,3,0">
+            <Frame x:Name="Main" x:FieldModifier="public" NavigationUIVisibility="Hidden" Margin="0,0,0,0">
+
             </Frame>
         </GroupBox>
-        <Button x:Name="HomeButton" BorderThickness="3" Margin="585,17,149,362" BorderBrush="DarkGray" FontSize="20" 
-        FontFamily="Verdana" Foreground="Black" Click="OnHomeButtonClick" Cursor="Hand">
+        <Button x:Name="HomeButton" BorderThickness="3" Margin="956,17,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnHomeButtonClick" HorizontalAlignment="Left" Width="56" Height="55" VerticalAlignment="Top">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>

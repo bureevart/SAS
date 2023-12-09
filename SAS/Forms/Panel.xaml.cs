@@ -24,5 +24,33 @@ namespace SAS.Forms
         {
             InitializeComponent();
         }
+
+        private void OnOffAlarmButton_Click(object sender, RoutedEventArgs e)
+        {
+            WrongInputLabel.Content = string.Empty;
+            var codestr = CodeInputTextBox.Text;
+
+            if (codestr == string.Empty) { return; }
+
+            if (int.TryParse(codestr, out var input))
+            {
+
+            }
+            else
+            {
+                WrongInputLabel.Content = "Введите корректный код!";
+            }
+        }
+
+        private void CodeInputTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (WrongInputLabel == null) return;
+            WrongInputLabel.Content = string.Empty;
+        }
+
+        private void InputCodeButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
