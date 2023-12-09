@@ -51,7 +51,7 @@
             </Button.Resources>
         </Button>
         <GroupBox Header="Панель вывода информации о состоянии сигнализации" Margin="19,39,0,0" Height="134" VerticalAlignment="Top" HorizontalAlignment="Left" Width="655"/>
-        <Label Content="Для того, чтобы начать управлять сигнализацией &#xD;&#xA;в комнате, введите ее четырехзначный код в окно &#xD;&#xA;ниже и нажмите на кнопку &quot;ввести код&quot;." HorizontalAlignment="Left" Height="58" Width="332" Margin="44,266,0,0" VerticalAlignment="Top"/>
+        <Label Content="Для того, чтобы начать управлять сигнализацией &#xD;&#xA;в комнате, введите ее код в окно ниже &#xD;&#xA; и нажмите на кнопку &quot;ввести код&quot;." HorizontalAlignment="Left" Height="58" Width="332" Margin="44,266,0,0" VerticalAlignment="Top"/>
         <Grid>
             <TextBox x:Name="CodeInputTextBox" HorizontalAlignment="Left" Margin="44,335,0,0" TextWrapping="Wrap" Text="" FontSize="30" Width="319" Height="50" VerticalAlignment="Top" TextChanged="CodeInputTextBox_TextChanged" MaxLength="4"/>
             <TextBlock IsHitTestVisible="False" Text="Введите номер комнаты:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="44,185,0,0" FontSize="20" Foreground="DarkGray">
@@ -78,7 +78,7 @@
             </Button.Resources>
         </Button>
         <Label Content="Питание" FontSize="20" HorizontalAlignment="Left" Width="124" Margin="804,84,0,0" Height="44" VerticalAlignment="Top"/>
-        <Label Content="Питание" FontSize="20" HorizontalAlignment="Left" Width="124" Margin="805,176,0,0" RenderTransformOrigin="0.484,1.496" Height="42" VerticalAlignment="Top"/>
+        <Label Content="Датчик" FontSize="20" HorizontalAlignment="Left" Width="124" Margin="805,176,0,0" RenderTransformOrigin="0.484,1.496" Height="42" VerticalAlignment="Top"/>
         <Label Content="Сеть" FontSize="20" HorizontalAlignment="Left" Width="124" Margin="805,274,0,0" RenderTransformOrigin="0.484,1.496" Height="42" VerticalAlignment="Top"/>
         <Label Content="Тревога" FontSize="20" HorizontalAlignment="Left" Width="124" Margin="805,366,0,0" RenderTransformOrigin="0.484,1.496" Height="42" VerticalAlignment="Top"/>
     </Grid>

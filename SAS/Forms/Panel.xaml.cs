@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace SAS.Forms
 {
@@ -20,7 +21,7 @@ namespace SAS.Forms
     /// </summary>
     public partial class Panel : Page
     {
-        
+        private DispatcherTimer _timer = new DispatcherTimer();
         public static List<Room> Rooms = new List<Room>();
         public static Room currentRoom;
 
@@ -31,6 +32,10 @@ namespace SAS.Forms
             Rooms.Add(new Room(1004, 0, true, false, false));
             Rooms.Add(new Room(103, 0, true, false, false));
             Rooms.Add(new Room(8543, 0, true, false, false));
+
+            _timer.Tick += new EventHandler(DispatcherTimer_Tick);
+            _timer.Interval = new TimeSpan(0, 0, 1);
+            _timer.Start();
         }
 
         private void OnInputCodeButton(object sender, RoutedEventArgs e)
@@ -71,6 +76,15 @@ namespace SAS.Forms
         private void OnOffAlarmButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private async void DispatcherTimer_Tick(object? sender, EventArgs e)
+        {
+            if(currentRoom == null) { return; }
+            if(currentRoom.AlarmStatus)
+                AlarmEll.Fill = Brushes.Gray;
+            else
+                AlarmEll.Fill = Brushes.Red;
         }
     }
 }
