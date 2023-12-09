@@ -9,7 +9,15 @@
       Title="Home">
 
     <Grid>
-        <Label Content="                                    Добро пожаловать в приложение системы охранной сигнализации!&#xA;&#xA;                                   Это приложение имитирует работу системы охранной сигнализации.&#xA;&#xA;Вы можете ставить на охрану, снимать с охраны, контролировать зоны системы и просматривать историю тревог." HorizontalAlignment="Center" VerticalAlignment="Center" Height="294" Width="660" />
-
+        <Label HorizontalAlignment="Center" 
+            VerticalAlignment="Center" >
+            <StackPanel HorizontalAlignment="Center">    
+                <TextBlock HorizontalAlignment="Center" Text="Добро пожаловать в приложение системы охранной сигнализации!"/>
+                <TextBlock HorizontalAlignment="Center" Text="Это приложение имитирует работу системы охранной сигнализации." />
+                <TextBlock HorizontalAlignment="Center" Text="Вы можете ставить на охрану, снимать с охраны, контролировать зоны системы и просматривать историю тревог."/>
+                <TextBlock HorizontalAlignment="Center" Text="Приложение создано в рамках лабораторной работы по дисциплине ПСРВ, студентом 4-го курса ЭАС Маровым Дмитрием."/>
+                <TextBlock HorizontalAlignment="Center" Text="УФА 2023" />
+            </StackPanel>
+        </Label>
     </Grid>
 </Page>
