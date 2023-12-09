@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SAS.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,9 @@ namespace SAS
     /// </summary>
     public partial class MainWindow : Window
     {
+        public History HistoryPage = new History();
+        public Settings SettingsPage = new Settings();
+        public Forms.Panel PanelPage = new Forms.Panel();
         public MainWindow()
         {
             InitializeComponent();
@@ -32,17 +36,17 @@ namespace SAS
 
         private void OnSettingsButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Main.Content = SettingsPage;
         }
 
         private void OnHistoryButtonClick(object sender, RoutedEventArgs e)
         {
-
+            Main.Content = HistoryPage;
         }
 
         private void OnPanelButtonClick(object sender, RoutedEventArgs e)
         {
-            
+            Main.Content = PanelPage;
         }
     }
 }
