@@ -12,18 +12,18 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="ПУ" Margin="10,10,0,10" HorizontalAlignment="Left" Width="675">
+        <GroupBox Header="ПУ" FontSize="20" Margin="10,10,0,10" HorizontalAlignment="Left" Width="675"> 
             <StackPanel/>
         </GroupBox>
-        <GroupBox Header="ПКП" Margin="690,10,0,10" HorizontalAlignment="Left" Width="430"/>
-        <GroupBox Header="Коды комнат" Margin="19,0,0,20" HorizontalAlignment="Left" Width="655" Height="92" VerticalAlignment="Bottom">
-            <Label Content="Комната 317 - Код комнаты: 1004&#xD;&#xA;Комната 205 - Код комнаты: 103&#xD;&#xA;Комната 105 - Код комнаты: 8543" HorizontalAlignment="Left" Height="58" Width="617" Margin="19,0,0,0"/>
+        <GroupBox Header="ПКП" Margin="690,10,0,10" FontSize="20" HorizontalAlignment="Left" Width="430"/>
+        <GroupBox Header="Коды комнат" Margin="19,0,0,20" FontSize="20" HorizontalAlignment="Left" Width="655" Height="92" VerticalAlignment="Bottom">
+            <Label Content="Комната 317 - Код комнаты: 1004&#xD;&#xA;Комната 205 - Код комнаты: 103&#xD;&#xA;Комната 105 - Код комнаты: 8543" FontSize="12" HorizontalAlignment="Left" Height="58" Width="617" Margin="19,0,0,0"/>
         </GroupBox>
 
-        <GroupBox Header="Панель ввода кода сигнализации" Margin="19,229,0,0" HorizontalAlignment="Left" Width="369" Height="189" VerticalAlignment="Top"/>
+        <GroupBox Header="Панель ввода кода сигнализации" FontSize="20" Margin="19,229,0,0" HorizontalAlignment="Left" Width="369" Height="189" VerticalAlignment="Top"/>
 
 
-        <Button x:Name="OnOffAlarmButton" Content="ВКЛ" BorderThickness="3" Margin="0,259,579,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnOffAlarmButton_Click" HorizontalAlignment="Right" Width="82" Height="56" VerticalAlignment="Top">
+        <Button x:Name="OnOffAlarmButton" Content="ВКЛ" BorderThickness="3" Margin="0,259,579,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnOffAlarmButton_Click" HorizontalAlignment="Right" Width="82" Height="56" VerticalAlignment="Top" Cursor="Hand">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -31,27 +31,27 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="InputCodeButton" Content="Ввести код" BorderThickness="3" Margin="0,353,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Center" Width="192" RenderTransformOrigin="0.516,-0.533" Height="55" VerticalAlignment="Top" Click="OnInputCodeButton">
+        <Button x:Name="InputCodeButton" Content="Ввести код" BorderThickness="3" Margin="0,353,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnInputCodeButton_Click" HorizontalAlignment="Center" Width="192" RenderTransformOrigin="0.516,-0.533" Height="55" VerticalAlignment="Top" Cursor="Hand">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <Ellipse x:Name="PanelAlarmEll"  Margin="588,77,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
-        <Ellipse x:Name="PowerEll"  Margin="732,72,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
-        <Ellipse x:Name="SensorEll"  Margin="732,163,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
-        <Ellipse x:Name="NetworkEll"  Margin="732,260,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68"/>
-        <Ellipse x:Name="AlarmEll"  Margin="732,353,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top"/>
-        <Button x:Name="TestButton" Content="ТЕСТ" BorderThickness="3" Margin="579,259,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="82" Height="56" VerticalAlignment="Top">
+        <Ellipse x:Name="PanelAlarmEll"  Margin="588,77,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68" Fill="Gray"/>
+        <Ellipse x:Name="PowerEll"  Margin="732,72,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top" Fill="Gray"/>
+        <Ellipse x:Name="SensorEll"  Margin="732,163,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top" Fill="Gray"/>
+        <Ellipse x:Name="NetworkEll"  Margin="732,260,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68" Fill="Gray"/>
+        <Ellipse x:Name="AlarmEll"  Margin="732,353,0,0" Stroke="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Height="68" Fill="Gray"/>
+        <Button x:Name="TestButton" Content="ТЕСТ" BorderThickness="3" Margin="579,259,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnTestButton_Click" HorizontalAlignment="Left" Width="82" Height="56" VerticalAlignment="Top" Cursor="Hand">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <GroupBox Header="Панель вывода информации о состоянии сигнализации" Margin="19,39,0,0" Height="134" VerticalAlignment="Top" HorizontalAlignment="Left" Width="655"/>
-        <Label Content="Для того, чтобы начать управлять сигнализацией &#xD;&#xA;в комнате, введите ее код в окно ниже &#xD;&#xA; и нажмите на кнопку &quot;ввести код&quot;." HorizontalAlignment="Left" Height="58" Width="332" Margin="44,266,0,0" VerticalAlignment="Top"/>
+        <GroupBox Header="Панель вывода информации о состоянии сигнализации" Margin="19,39,0,0" Height="134" VerticalAlignment="Top" HorizontalAlignment="Left" Width="655" FontSize="20"/>
+        <Label Content="Для того, чтобы начать управлять сигнализацией &#xD;&#xA;в комнате, введите ее код в окно ниже &#xD;&#xA; и нажмите на кнопку &quot;ввести код&quot;." FontSize="12" HorizontalAlignment="Left" Height="58" Width="332" Margin="44,266,0,0" VerticalAlignment="Top"/>
         <Grid>
             <TextBox x:Name="CodeInputTextBox" HorizontalAlignment="Left" Margin="44,335,0,0" TextWrapping="Wrap" Text="" FontSize="30" Width="319" Height="50" VerticalAlignment="Top" TextChanged="CodeInputTextBox_TextChanged" MaxLength="4"/>
             <TextBlock IsHitTestVisible="False" Text="Введите номер комнаты:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="44,185,0,0" FontSize="20" Foreground="DarkGray">
@@ -67,10 +67,10 @@
                 </TextBlock.Style>
             </TextBlock>
 
-            <Label Content="Код комнаты: #### - Состояние: ####" Background="DarkBlue" BorderBrush="White" BorderThickness="3" Foreground="Yellow" FontSize="20" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="75" Margin="44,72,0,0" VerticalAlignment="Top" Width="521"/>
+            <Label x:Name="DisplayLabel" Content="Код комнаты: #### - Состояние: ####" Background="DarkBlue" BorderBrush="White" BorderThickness="3" Foreground="Yellow" FontSize="20" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="75" Margin="44,72,0,0" VerticalAlignment="Top" Width="521"/>
         </Grid>
         <Label x:Name="WrongInputLabel" HorizontalAlignment="Left" Foreground="Red" Width="332" Margin="44,385,0,0" Height="23" VerticalAlignment="Top"/>
-        <Button x:Name="SetAlarmButton" Content="Поставить на сигнализацию" BorderThickness="3" Margin="728,448,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="354" Height="70" VerticalAlignment="Top" Click="SetAlarmButton_Click">
+        <Button x:Name="SetAlarmButton" Content="Поставить на сигнализацию" BorderThickness="3" Margin="728,448,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="354" Height="70" VerticalAlignment="Top" Click="SetAlarmButton_Click" Cursor="Hand">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
