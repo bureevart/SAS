@@ -22,7 +22,6 @@
 
         <GroupBox Header="Панель ввода кода сигнализации" FontSize="20" Margin="19,229,0,0" HorizontalAlignment="Left" Width="369" Height="189" VerticalAlignment="Top"/>
 
-
         <Button x:Name="OnOffAlarmButton" Content="ВКЛ" BorderThickness="3" Margin="0,259,579,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnOffAlarmButton_Click" HorizontalAlignment="Right" Width="82" Height="56" VerticalAlignment="Top" Cursor="Hand">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -43,7 +42,7 @@
         <Ellipse x:Name="SensorEll"  Margin="732,163,0,0" Stroke="Black" HorizontalAlignment="Left" Width="68" Height="68" VerticalAlignment="Top" Fill="Gray"/>
         <Ellipse x:Name="NetworkEll"  Margin="732,260,0,0" Stroke="Black" Height="68" VerticalAlignment="Top" HorizontalAlignment="Left" Width="68" Fill="Gray"/>
         <Ellipse x:Name="AlarmEll"  Margin="732,353,0,0" Stroke="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Width="68" Height="68" Fill="Gray"/>
-        <Button x:Name="TestButton" Content="ТЕСТ" BorderThickness="3" Margin="579,259,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnTestButton_Click" HorizontalAlignment="Left" Width="82" Height="56" VerticalAlignment="Top" Cursor="Hand">
+        <Button x:Name="TestButton" Content="ТЕСТ" BorderThickness="3" Margin="579,259,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="OnTestButton_Click" HorizontalAlignment="Left" Width="82" Height="56" VerticalAlignment="Top" Cursor="Hand" IsEnabled="True">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>

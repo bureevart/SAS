@@ -32,15 +32,15 @@ namespace SAS.Forms
         { 
             Off = 0,
             On = 1,
-            Alarm = 2
+            Alarm = 2,
+            Error = 3
         }
 
         public enum PanelAlarmStatus
         {
             Off = 0,
             On = 1,
-            Alarm = 2,
-            Error = 3
+            Alarm = 2
         }
         public bool SimulationStarted = false;
         
@@ -98,6 +98,9 @@ namespace SAS.Forms
             TestButton.Content = "СТОП";
             TestButton.Background = Brushes.Red;
             TestButton.Foreground = Brushes.White;
+            TestButton.IsEnabled = false;
+            await Task.Delay(5000);
+            TestButton.IsEnabled = true;
         }
 
         private void CodeInputTextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -12,21 +12,22 @@ namespace SAS{
 
         public static bool OnSimulate { get; set; } = false;
 
-        public async static void SimulateOnce(List<Room> rooms){
-            if (OnSimulate) { return; }
+        // public async static void SimulateOnce(List<Room> rooms){
+        //     if (OnSimulate) { return; }
 
-            OnSimulate = true;
+        //     OnSimulate = true;
 
-            Random rnd = new Random((int)DateTime.Today.Ticks);
+        //     Random rnd = new Random((int)DateTime.Today.Ticks);
 
-            _ = Task.Run(async () =>
-            {
-                await Task.Delay(1000);
-                var room = rooms[rnd.Next(rooms.ToArray().Length)];
-                room.TriggerAlarm();
-                OnSimulate = false;
-            });
-        }
+        //     _ = Task.Run(async () =>
+        //     {
+        //         await Task.Delay(1000);
+        //         var room = rooms[rnd.Next(rooms.ToArray().Length)];
+
+        //         room.TriggerAlarm();
+        //         OnSimulate = false;
+        //     });
+        // }
 
         public async static void Simulate(List<Room> rooms)
         {
@@ -41,8 +42,10 @@ namespace SAS{
                 while (OnSimulate) 
                 {
                     await Task.Delay(1000);
-                    var room = rooms[rnd.Next(rooms.ToArray().Length)];
-                    room.TriggerAlarm();
+                    if (OnSimulate){
+                        var room = rooms[rnd.Next(rooms.ToArray().Length)];
+                        room.TriggerAlarm();
+                    }
                 }
             });
         }

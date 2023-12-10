@@ -20,6 +20,9 @@ namespace SAS.models
                 case string str:
                     Source = str;
                     break;
+                case Room room:
+                    Source = $"Комната код - {room.Code}";
+                    break;
                 default:
                     Source = "Неизвестный источник";
                     break;

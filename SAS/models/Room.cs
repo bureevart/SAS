@@ -32,7 +32,7 @@ namespace SAS
         }
 
         public async void TriggerAlarm(){
-            if(!PowerStatus || AlarmStatus || SensorStatus == SensorStatusses.Off || !NetworkStatus) { return; }
+            if(!PowerStatus || AlarmStatus || SensorStatus == SensorStatusses.Off || !NetworkStatus || SensorStatus == SensorStatusses.Error) { return; }
 
             SensorStatus = SensorStatusses.Alarm;
             // DisplayLabel.Dispatcher.Invoke(() => DisplayLabel.Content = "Код комнаты: " + Code + " - Состояние: Тревога!");
@@ -43,7 +43,7 @@ namespace SAS
 
         public async void OffAlarm()
         {
-            if(!AlarmStatus) { return; }
+            if(!AlarmStatus || SensorStatus == SensorStatusses.Error) { return; }
             SensorStatus = SensorStatusses.On;
             // DisplayLabel.Dispatcher.Invoke(() => DisplayLabel.Content = "Код комнаты: " + Code + " - Состояние: Тревога отключена!");
             History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Тревога отключена!");
@@ -53,9 +53,10 @@ namespace SAS
 
         public async void SetAlarm()
         {
-            if (AlarmStatus || !PowerStatus || !NetworkStatus) { return; }
+            if (AlarmStatus || !PowerStatus || !NetworkStatus || SensorStatus == SensorStatusses.Error) { return; }
 
             SensorStatus = SensorStatusses.On;
+            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Сигнализация поставлена!");
             RewriteLabel.Invoke(this, new EventArgs());
             RedrawEllispse.Invoke(this, new EventArgs());
         }
@@ -66,6 +67,7 @@ namespace SAS
 
             IsAlarmSet = true;
             PowerStatus = true;
+            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Подсистема сигнализации включена!");
             RewriteLabel.Invoke(this, new EventArgs());
             RedrawEllispse.Invoke(this, new EventArgs());
         }
@@ -76,7 +78,31 @@ namespace SAS
 
             IsAlarmSet = false;
             PowerStatus = false;
+            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Подсистема сигнализации выключена!");
             SensorStatus = SensorStatusses.Off;
+            RewriteLabel.Invoke(this, new EventArgs());
+            RedrawEllispse.Invoke(this, new EventArgs());
+        }
+        public async void DestroySensor()
+        {
+            if(SensorStatus == SensorStatusses.Error)
+            {
+                return;
+            }
+            SensorStatus = SensorStatusses.Error;
+            
+            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Сенсор уничтожен!");
+            RewriteLabel.Invoke(this, new EventArgs());
+            RedrawEllispse.Invoke(this, new EventArgs());
+        }
+        public async void RebuildSensor()
+        {
+            if(SensorStatus == SensorStatusses.On)
+            {
+                return;
+            }
+            SensorStatus = SensorStatusses.On;
+            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Сенсор восстановлен!");
             RewriteLabel.Invoke(this, new EventArgs());
             RedrawEllispse.Invoke(this, new EventArgs());
         }

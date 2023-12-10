@@ -9,7 +9,7 @@
       Title="History">
 
     <Grid Background="Gray">
-        <DataGrid x:Name="EventGrid" HorizontalAlignment="Center" Height="352" VerticalAlignment="Center" Width="1026" d:ItemsSource="{d:SampleData ItemCount=5}" Background="LightGray" BorderThickness="3" BorderBrush="White" IsReadOnly="True">
+        <DataGrid x:Name="EventGrid" HorizontalAlignment="Center" Height="352" VerticalAlignment="Center" Width="1026" d:ItemsSource="{d:SampleData ItemCount=5}" Background="LightGray" BorderThickness="3" BorderBrush="White" IsReadOnly="True" AutoGenerateColumns="True" AutoGeneratingColumn="OnAutoGeneratingColumn">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>

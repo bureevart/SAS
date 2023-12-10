@@ -38,5 +38,6 @@ namespace AutomSys
 
             _eventGrid.Items.Dispatcher.Invoke(() => _eventGrid.Items.Refresh());
         }
+        
     }
 }
