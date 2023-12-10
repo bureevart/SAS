@@ -27,11 +27,12 @@ namespace SAS.Forms
         private DispatcherTimer _timer = new DispatcherTimer();
         public static List<Room> Rooms = new List<Room>();
         public static Room? currentRoom;
-        public enum SensorStatus
+
+        public enum SensorStatusses
         { 
-            off = 0,
-            on = 1,
-            alarm = 2
+            Off = 0,
+            On = 1,
+            Alarm = 2
         }
 
         public enum PanelAlarmStatus
@@ -46,9 +47,9 @@ namespace SAS.Forms
         {
             InitializeComponent();
 
-            Rooms.Add(new Room(1004, 0, true));
-            Rooms.Add(new Room(103, 0, true));
-            Rooms.Add(new Room(8543, 0, true));
+            Rooms.Add(new Room(1004, SensorStatusses.Off, false, DisplayLabel));
+            Rooms.Add(new Room(103, SensorStatusses.Off, false, DisplayLabel));
+            Rooms.Add(new Room(8543, SensorStatusses.Off, false, DisplayLabel));
 
             _timer.Tick += new EventHandler(DispatcherTimer_Tick);
             _timer.Interval = new TimeSpan(0, 0, 1);
@@ -68,6 +69,7 @@ namespace SAS.Forms
                     if (room.Code == input)
                     {
                         currentRoom = room;
+                        SetOnOffButtonStatus();
                         break;
                     }
                 }
@@ -78,13 +80,25 @@ namespace SAS.Forms
             }
         }
         private async void OnTestButton_Click(object sender, RoutedEventArgs e){
+            if (SimulateController.OnSimulate)
+            {
+                SimulateController.OnSimulate = false;
+                TestButton.Content = "ТЕСТ";
+                TestButton.Background = Brushes.LightGray;
+                TestButton.Foreground = Brushes.Black;
+                return;
+            }
             _ = Task.Run(() =>
             {
-                SimulateController.Simulate(Rooms, DisplayLabel);
+                SimulateController.Simulate(Rooms);
             });
-            TestButton.IsEnabled = !SimulationStarted;
-            await Task.Delay(5000);
-            TestButton.IsEnabled = SimulationStarted;
+            //TestButton.IsEnabled = !SimulationStarted;
+            //await Task.Delay(5000);
+            //TestButton.IsEnabled = SimulationStarted;
+
+            TestButton.Content = "СТОП";
+            TestButton.Background = Brushes.Red;
+            TestButton.Foreground = Brushes.White;
         }
 
         private void CodeInputTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -99,24 +113,10 @@ namespace SAS.Forms
             }
         }
 
-        private void OnOffAlarmButton_Click(object sender, RoutedEventArgs e)
+        private void OffAlarmButton_Click(object sender, RoutedEventArgs e)
         {
             if (currentRoom == null) { return; }
-            currentRoom.IsAlarmSet = !currentRoom.IsAlarmSet;
-            int AlarmStatus;
-            if(currentRoom.IsAlarmSet)
-                AlarmStatus = (int)PanelAlarmStatus.on;
-            else
-                AlarmStatus = (int)PanelAlarmStatus.off;
-            switch (AlarmStatus)
-            {
-                case (int)PanelAlarmStatus.on:
-                    Blink((int)PanelAlarmStatus.on, PanelAlarmEll);
-                    break;
-                case (int)PanelAlarmStatus.off:
-                    PanelAlarmEll.Fill = Brushes.Gray;
-                    break;
-            }
+            currentRoom.OffAlarm();
         }
 
         private async void DispatcherTimer_Tick(object? sender, EventArgs e)
@@ -125,15 +125,14 @@ namespace SAS.Forms
             
             switch (currentRoom.SensorStatus)
             {
-                case (int)SensorStatus.off:
+                case SensorStatusses.Off:
                     SensorEll.Fill = Brushes.White;
                     break;
-                case (int)SensorStatus.on:
+                case SensorStatusses.On:
                     SensorEll.Fill = Brushes.Green;
                     break;
-                case (int)SensorStatus.alarm:
+                case SensorStatusses.Alarm:
                     Blink(3, SensorEll);
-                    Blink((int)PanelAlarmStatus.alarm, PanelAlarmEll);
                     break;
             }
             if(currentRoom.PowerStatus) 
@@ -149,12 +148,67 @@ namespace SAS.Forms
                 AlarmEll.Fill = Brushes.White;
         }
 
+        private void OnOffAlarmButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentRoom == null) { return; }
+
+            if (currentRoom.PowerStatus)
+            {
+                currentRoom.DisableSystem();
+                OnOffAlarmButton.Content = "ВКЛ";
+                OnOffAlarmButton.Background = Brushes.Green;
+                OnOffAlarmButton.Foreground = Brushes.Black;
+                return;
+            }
+            currentRoom.EnableSystem();
+            OnOffAlarmButton.Content = "ВЫКЛ";
+            OnOffAlarmButton.Background = Brushes.Red;
+            OnOffAlarmButton.Foreground = Brushes.White;
+        }
+
+        public void SetOnOffButtonStatus()
+        {
+            if (currentRoom == null) { return; }
+
+            if (!currentRoom.PowerStatus)
+            {
+                OnOffAlarmButton.Content = "ВКЛ";
+                OnOffAlarmButton.Background = Brushes.Green;
+                OnOffAlarmButton.Foreground = Brushes.Black;
+                return;
+            }
+            OnOffAlarmButton.Content = "ВЫКЛ";
+            OnOffAlarmButton.Background = Brushes.Red;
+            OnOffAlarmButton.Foreground = Brushes.White;
+
+        }
+
         private void SetAlarmButton_Click(object sender, RoutedEventArgs e)
         {
             if (currentRoom == null) { return; }
 
-            currentRoom.SensorStatus = 1;
+            currentRoom.SensorStatus = SensorStatusses.On;
         }
+
+        public void PanelEllipseStatus()
+        {
+            PanelAlarmStatus currStatus = PanelAlarmStatus.off;
+            Rooms.ForEach(r =>
+            {
+                if (r.AlarmStatus)
+                {
+                    currStatus = PanelAlarmStatus.alarm;
+                }
+
+                if(r.SensorStatus == SensorStatusses.On && currStatus != PanelAlarmStatus.alarm)
+                {
+                    currStatus = PanelAlarmStatus.on;
+                }
+            });
+
+            Blink((int)currStatus, PanelAlarmEll);
+        }
+
 
         private void Blink(int code, Ellipse ellipse){
 
