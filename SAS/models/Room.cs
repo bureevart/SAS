@@ -1,3 +1,4 @@
+using SAS.Forms;
 using System;
 using System.Windows.Controls;
 using static SAS.Forms.Panel;
@@ -33,6 +34,7 @@ namespace SAS
 
             SensorStatus = SensorStatusses.Alarm;
             DisplayLabel.Dispatcher.Invoke(() => DisplayLabel.Content = "Код комнаты: " + Code + " - Состояние: Тревога!");
+            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Тревога!");
             RedrawEllispse.Invoke(this, new EventArgs());
         }
 
@@ -41,6 +43,7 @@ namespace SAS
             if(!AlarmStatus) { return; }
             SensorStatus = SensorStatusses.On;
             DisplayLabel.Dispatcher.Invoke(() => DisplayLabel.Content = "Код комнаты: " + Code + " - Состояние: Тревога отключена!");
+            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Тревога отключена!");
             RedrawEllispse.Invoke(this, new EventArgs());
         }
 

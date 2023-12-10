@@ -21,7 +21,7 @@ namespace SAS{
 
             _ = Task.Run(async () =>
             {
-                await Task.Delay(5000);
+                await Task.Delay(1000);
                 var room = rooms[rnd.Next(rooms.ToArray().Length)];
                 room.TriggerAlarm();
                 OnSimulate = false;
@@ -40,7 +40,7 @@ namespace SAS{
             {
                 while (OnSimulate) 
                 {
-                    await Task.Delay(5000);
+                    await Task.Delay(1000);
                     var room = rooms[rnd.Next(rooms.ToArray().Length)];
                     room.TriggerAlarm();
                 }

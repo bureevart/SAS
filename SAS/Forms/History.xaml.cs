@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutomSys;
+using SAS.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,13 @@ namespace SAS.Forms
     /// </summary>
     public partial class History : Page
     {
+        public static EventsController EventsController;
+
         public History()
         {
             InitializeComponent();
+            EventsController = new EventsController(EventGrid);
+            EventGrid.ItemsSource = EventsController.Events;
         }
     }
 }
