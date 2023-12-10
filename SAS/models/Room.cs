@@ -97,7 +97,7 @@ namespace SAS
         }
         public async void RepairSensor()
         {
-            if(SensorStatus == SensorStatusses.On || SensorStatus == SensorStatusses.Off)
+            if(SensorStatus == SensorStatusses.On || SensorStatus == SensorStatusses.Off || SensorStatus == SensorStatusses.Alarm)
             {
                 return;
             }
