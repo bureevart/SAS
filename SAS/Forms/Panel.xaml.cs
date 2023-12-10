@@ -38,7 +38,7 @@ namespace SAS.Forms
         {   
             on = 1,
             alarm = 2,
-            off = 3
+            off = 0
         }
         public bool SimulationStarted = false;
         
