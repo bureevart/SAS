@@ -133,6 +133,9 @@ namespace SAS.Forms
                 case SensorStatusses.On:
                     SensorEll.Fill = Brushes.Green;
                     break;
+                case SensorStatusses.Error:
+                    Blink(2, SensorEll);
+                    break;
                 case SensorStatusses.Alarm:
                     Blink(3, SensorEll);
                     break;
@@ -222,7 +225,7 @@ namespace SAS.Forms
             int roomCode = 0;
             Rooms.ForEach(r => {
                 roomCode = r.Code;
-                if (r.PowerStatus & !r.AlarmStatus)
+                if (r.PowerStatus & !r.AlarmStatus & r.SensorStatus != SensorStatusses.Error)
                 {
                     statusText = "Включена";
                 }
@@ -235,6 +238,9 @@ namespace SAS.Forms
                 }
                 if (!r.PowerStatus){
                     statusText = "Выключена";
+                }
+                if (r.SensorStatus == SensorStatusses.Error){
+                    statusText = "Поломка";
                 }
                 DisplayLabel.Dispatcher.Invoke(new Action(() => {
                     DisplayLabel.Content += $"Код комнаты: {roomCode}   - Состояние: {statusText} \n";

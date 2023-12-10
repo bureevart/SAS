@@ -85,26 +85,30 @@ namespace SAS
         }
         public async void DestroySensor()
         {
-            if(SensorStatus == SensorStatusses.Error)
+            if(SensorStatus == SensorStatusses.Error || SensorStatus == SensorStatusses.Off || SensorStatus == SensorStatusses.Alarm)
             {
                 return;
             }
             SensorStatus = SensorStatusses.Error;
             
-            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Сенсор уничтожен!");
+            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Датчик сломан!");
             RewriteLabel.Invoke(this, new EventArgs());
             RedrawEllispse.Invoke(this, new EventArgs());
         }
-        public async void RebuildSensor()
+        public async void RepairSensor()
         {
-            if(SensorStatus == SensorStatusses.On)
+            if(SensorStatus == SensorStatusses.On || SensorStatus == SensorStatusses.Off)
             {
                 return;
             }
             SensorStatus = SensorStatusses.On;
-            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Сенсор восстановлен!");
+            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Датчик восстановлен!");
             RewriteLabel.Invoke(this, new EventArgs());
             RedrawEllispse.Invoke(this, new EventArgs());
+        }
+        public async void BreakButton()
+        {
+            //if() 
         }
     }
 }
