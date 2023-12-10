@@ -107,6 +107,13 @@
                 </Style>
             </Button.Resources>
         </Button>
+        <Button x:Name="ChangeSoundStateButton" Content="Выключить звук" BorderThickness="3" Margin="40,218,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" Click="ChangeSoundStateButton_Click" HorizontalAlignment="Left" Width="186" RenderTransformOrigin="0.516,-0.533" Height="55" VerticalAlignment="Top" Cursor="Hand">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
 
 
 

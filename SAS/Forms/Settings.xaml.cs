@@ -61,5 +61,10 @@ namespace SAS.Forms
         {
             History.EventsController.ClearData();
         }
+
+        private void ChangeSoundStateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
