@@ -40,7 +40,7 @@ namespace SAS{
             {
                 while (OnSimulate) 
                 {
-                    await Task.Delay(1000);
+                    await Task.Delay(5000);
                     var room = rooms[rnd.Next(rooms.ToArray().Length)];
                     room.TriggerAlarm();
                 }

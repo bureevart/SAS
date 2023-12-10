@@ -36,17 +36,18 @@ namespace SAS.Forms
         }
 
         public enum PanelAlarmStatus
-        {   
-            on = 1,
-            alarm = 2,
-            off = 3
+        {
+            Off = 0,
+            On = 1,
+            Alarm = 2,
+            Error = 3
         }
         public bool SimulationStarted = false;
         
         public Panel()
         {
             InitializeComponent();
-
+            Room.RedrawEllispse += PanelEllipseStatus;
             Rooms.Add(new Room(1004, SensorStatusses.Off, false, DisplayLabel));
             Rooms.Add(new Room(103, SensorStatusses.Off, false, DisplayLabel));
             Rooms.Add(new Room(8543, SensorStatusses.Off, false, DisplayLabel));
@@ -92,10 +93,7 @@ namespace SAS.Forms
             {
                 SimulateController.Simulate(Rooms);
             });
-            //TestButton.IsEnabled = !SimulationStarted;
-            //await Task.Delay(5000);
-            //TestButton.IsEnabled = SimulationStarted;
-
+            Room.OnStartTest();
             TestButton.Content = "СТОП";
             TestButton.Background = Brushes.Red;
             TestButton.Foreground = Brushes.White;
@@ -187,26 +185,29 @@ namespace SAS.Forms
         {
             if (currentRoom == null) { return; }
 
-            currentRoom.SensorStatus = SensorStatusses.On;
+            currentRoom.SetAlarm();
         }
 
-        public void PanelEllipseStatus()
+        public void PanelEllipseStatus(object sender, EventArgs e)
         {
-            PanelAlarmStatus currStatus = PanelAlarmStatus.off;
+            PanelAlarmStatus currStatus = PanelAlarmStatus.Off;
             Rooms.ForEach(r =>
             {
                 if (r.AlarmStatus)
                 {
-                    currStatus = PanelAlarmStatus.alarm;
+                    currStatus = PanelAlarmStatus.Alarm;
                 }
 
-                if(r.SensorStatus == SensorStatusses.On && currStatus != PanelAlarmStatus.alarm)
+                if(r.SensorStatus == SensorStatusses.On && currStatus != PanelAlarmStatus.Alarm)
                 {
-                    currStatus = PanelAlarmStatus.on;
+                    currStatus = PanelAlarmStatus.On;
                 }
             });
+            PanelAlarmEll.Dispatcher.Invoke(new Action(() =>
+            {
+                Blink((int)currStatus, PanelAlarmEll);
+            }));
 
-            Blink((int)currStatus, PanelAlarmEll);
         }
 
 

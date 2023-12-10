@@ -12,7 +12,12 @@ namespace SAS
         public bool IsAlarmSet{ get; set; }
         public bool NetworkStatus => PowerStatus && IsAlarmSet;
         public Label DisplayLabel { get; }
+        public static event EventHandler<EventArgs> RedrawEllispse;
 
+        public static void OnStartTest()
+        {
+            RedrawEllispse.Invoke(null, new EventArgs());
+        }
 
         public Room(int code, SensorStatusses sensorStatus, bool powerStatus, Label displaylabel)
         {
@@ -24,10 +29,11 @@ namespace SAS
         }
 
         public async void TriggerAlarm(){
-            if(AlarmStatus || SensorStatus == SensorStatusses.Off || !NetworkStatus) { return; }
+            if(!PowerStatus || AlarmStatus || SensorStatus == SensorStatusses.Off || !NetworkStatus) { return; }
 
             SensorStatus = SensorStatusses.Alarm;
             DisplayLabel.Dispatcher.Invoke(() => DisplayLabel.Content = "Код комнаты: " + Code + " - Состояние: Тревога!");
+            RedrawEllispse.Invoke(this, new EventArgs());
         }
 
         public async void OffAlarm()
@@ -35,6 +41,15 @@ namespace SAS
             if(!AlarmStatus) { return; }
             SensorStatus = SensorStatusses.On;
             DisplayLabel.Dispatcher.Invoke(() => DisplayLabel.Content = "Код комнаты: " + Code + " - Состояние: Тревога отключена!");
+            RedrawEllispse.Invoke(this, new EventArgs());
+        }
+
+        public async void SetAlarm()
+        {
+            if (AlarmStatus || !PowerStatus || !NetworkStatus) { return; }
+
+            SensorStatus = SensorStatusses.On;
+            RedrawEllispse.Invoke(this, new EventArgs());
         }
 
         public async void EnableSystem()
@@ -43,7 +58,7 @@ namespace SAS
 
             IsAlarmSet = true;
             PowerStatus = true;
-
+            RedrawEllispse.Invoke(this, new EventArgs());
         }
 
         public async void DisableSystem()
@@ -53,7 +68,7 @@ namespace SAS
             IsAlarmSet = false;
             PowerStatus = false;
             SensorStatus = SensorStatusses.Off;
-
+            RedrawEllispse.Invoke(this, new EventArgs());
         }
     }
 }
