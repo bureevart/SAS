@@ -1,40 +1,81 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Shapes;
-using System.Windows.Threading;
-using Microsoft.VisualBasic;
+using static SAS.Forms.Panel;
 
-namespace SAS{
+namespace SAS
+{
     public class Room {
-        public Dictionary<int, int> roomCodes = new Dictionary<int, int>
-        {
-            { 1004, 317 },
-            { 103, 205 },
-            { 8543, 105 }
-        };
         public int Code { get; set; }
-        public int SensorStatus { get; set; }
+        public SensorStatusses SensorStatus { get; set; }
         public bool PowerStatus { get; set; }
-        public bool AlarmStatus { get; set; }
+        public bool AlarmStatus { get => SensorStatus == SensorStatusses.Alarm; }
         public bool IsAlarmSet{ get; set; }
         public bool NetworkStatus => PowerStatus && IsAlarmSet;
-        public Room(int Code, int SensorStatus, bool PowerStatus)
+        public Label DisplayLabel { get; }
+        public static event EventHandler<EventArgs> RedrawEllispse;
+        public static event EventHandler<EventArgs> RewriteLabel;
+
+        public static void OnStartTest()
         {
-            this.Code = Code;
-            this.SensorStatus = SensorStatus;
-            this.PowerStatus = PowerStatus;
+            RedrawEllispse.Invoke(null, new EventArgs());
+            RewriteLabel.Invoke(null, new EventArgs()); 
         }
-        public async void TriggerAlarm(int code, Label label){
-            AlarmStatus = true;
-            SensorStatus = 2;
-            label.Dispatcher.Invoke(() => label.Content = "Код комнаты: " + code + " - Состояние: Тревога!");
+
+        public Room(int code, SensorStatusses sensorStatus, bool powerStatus, Label displaylabel)
+        {
+            Code = code;
+            SensorStatus = sensorStatus;
+            PowerStatus = powerStatus;
+            DisplayLabel = displaylabel;
             
+        }
+
+        public async void TriggerAlarm(){
+            if(!PowerStatus || AlarmStatus || SensorStatus == SensorStatusses.Off || !NetworkStatus) { return; }
+
+            SensorStatus = SensorStatusses.Alarm;
+            // DisplayLabel.Dispatcher.Invoke(() => DisplayLabel.Content = "Код комнаты: " + Code + " - Состояние: Тревога!");
+            RewriteLabel.Invoke(this, new EventArgs());
+            RedrawEllispse.Invoke(this, new EventArgs());
+        }
+
+        public async void OffAlarm()
+        {
+            if(!AlarmStatus) { return; }
+            SensorStatus = SensorStatusses.On;
+            // DisplayLabel.Dispatcher.Invoke(() => DisplayLabel.Content = "Код комнаты: " + Code + " - Состояние: Тревога отключена!");
+            RewriteLabel.Invoke(this, new EventArgs()); 
+            RedrawEllispse.Invoke(this, new EventArgs());
+        }
+
+        public async void SetAlarm()
+        {
+            if (AlarmStatus || !PowerStatus || !NetworkStatus) { return; }
+
+            SensorStatus = SensorStatusses.On;
+            RewriteLabel.Invoke(this, new EventArgs());
+            RedrawEllispse.Invoke(this, new EventArgs());
+        }
+
+        public async void EnableSystem()
+        {
+            if (PowerStatus || NetworkStatus) { return; }
+
+            IsAlarmSet = true;
+            PowerStatus = true;
+            RewriteLabel.Invoke(this, new EventArgs());
+            RedrawEllispse.Invoke(this, new EventArgs());
+        }
+
+        public async void DisableSystem()
+        {
+            if (!PowerStatus) { return; }
+
+            IsAlarmSet = false;
+            PowerStatus = false;
+            SensorStatus = SensorStatusses.Off;
+            RewriteLabel.Invoke(this, new EventArgs());
+            RedrawEllispse.Invoke(this, new EventArgs());
         }
     }
 }

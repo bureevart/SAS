@@ -12,7 +12,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="ПУ" FontSize="20" Margin="10,10,0,10" HorizontalAlignment="Left" Width="675"> 
+        <GroupBox Header="ПУ" FontSize="20" Margin="10,10,0,10" HorizontalAlignment="Left" Width="675">
             <StackPanel/>
         </GroupBox>
         <GroupBox Header="ПКП" Margin="690,10,0,10" FontSize="20" HorizontalAlignment="Left" Width="430"/>
@@ -67,7 +67,14 @@
                 </TextBlock.Style>
             </TextBlock>
 
-            <Label x:Name="DisplayLabel" Content="Код комнаты: #### - Состояние: ####" Background="DarkBlue" BorderBrush="White" BorderThickness="3" Foreground="Yellow" FontSize="20" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="75" Margin="44,72,0,0" VerticalAlignment="Top" Width="521"/>
+            <Label x:Name="DisplayLabel" Content="Код комнаты: #### - Состояние: ####" Background="DarkBlue" BorderBrush="White" BorderThickness="3" Foreground="Yellow" FontSize="20" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="100" Margin="44,72,0,0" VerticalAlignment="Top" Width="521"/>
+            <Button x:Name="SetAlarmOff" Content="ВЫКЛ" BorderThickness="3" Margin="987,360,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="92" Height="56" VerticalAlignment="Top" Click="OffAlarmButton_Click" Cursor="Hand" RenderTransformOrigin="0.349,0.477">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </Grid>
         <Label x:Name="WrongInputLabel" HorizontalAlignment="Left" Foreground="Red" Width="332" Margin="44,385,0,0" Height="23" VerticalAlignment="Top"/>
         <Button x:Name="SetAlarmButton" Content="Поставить на сигнализацию" BorderThickness="3" Margin="728,448,0,0" BorderBrush="DarkGray" FontSize="20" FontFamily="Verdana" Foreground="Black" HorizontalAlignment="Left" Width="354" Height="70" VerticalAlignment="Top" Click="SetAlarmButton_Click" Cursor="Hand">
