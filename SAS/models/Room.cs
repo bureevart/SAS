@@ -53,7 +53,7 @@ namespace SAS
 
         public async void SetAlarm()
         {
-            if (AlarmStatus || !PowerStatus || !NetworkStatus || SensorStatus == SensorStatusses.Error) { return; }
+            if (AlarmStatus || !PowerStatus || !NetworkStatus || SensorStatus == SensorStatusses.Error || SensorStatus == SensorStatusses.On) { return; }
 
             SensorStatus = SensorStatusses.On;
             History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Сигнализация поставлена!");

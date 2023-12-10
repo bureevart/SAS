@@ -25,6 +25,7 @@ namespace SAS
         public Settings SettingsPage;
         public Forms.Panel PanelPage = new Forms.Panel();
         public Home HomePage = new Home();
+        public SoundController soundController = new SoundController();
         public MainWindow()
         {
             InitializeComponent();

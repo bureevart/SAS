@@ -64,7 +64,10 @@ namespace SAS.Forms
 
         private void ChangeSoundStateButton_Click(object sender, RoutedEventArgs e)
         {
-
+            SoundController.IsMuted = !SoundController.IsMuted;
+            if (SoundController.IsMuted)
+                SoundController.Stop();
+            ChangeSoundStateButton.Content = SoundController.IsMuted ? "Включить звук" : "Выключить звук";
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -126,9 +127,13 @@ namespace SAS.Forms
             if(currentRoom == null) { return; }
             if(currentRoom.IsButtonBroken){
                 SetAlarmButton.Content = "Вызвать бригаду рабочих";
+                SetAlarmButton.Background = Brushes.Red;
+                SetAlarmButton.Foreground = Brushes.White;
             }
             else{
                 SetAlarmButton.Content = "Поставить на сигнализацию";
+                SetAlarmButton.Foreground = Brushes.Black;
+                SetAlarmButton.Background = Brushes.LightGray;
             }
             switch (currentRoom.SensorStatus)
             {
@@ -212,11 +217,16 @@ namespace SAS.Forms
                 if (r.AlarmStatus)
                 {
                     currStatus = PanelAlarmStatus.Alarm;
+                    SoundController.Play();
                 }
 
                 if(r.SensorStatus == SensorStatusses.On && currStatus != PanelAlarmStatus.Alarm)
                 {
                     currStatus = PanelAlarmStatus.On;
+                }
+                if (currStatus != PanelAlarmStatus.Alarm)
+                {
+                    SoundController.Stop();
                 }
             });
             PanelAlarmEll.Dispatcher.Invoke(new Action(() =>
@@ -239,7 +249,7 @@ namespace SAS.Forms
                     statusText = "Включена";
                 }
                 if (r.AlarmStatus){
-                    statusText = "Тревога!";              
+                    statusText = "Тревога!";
                 }
                 if (r.PowerStatus & r.SensorStatus == SensorStatusses.On)
                 {
