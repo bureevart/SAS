@@ -38,6 +38,11 @@ namespace AutomSys
 
             _eventGrid.Items.Dispatcher.Invoke(() => _eventGrid.Items.Refresh());
         }
-        
+
+        internal void ClearData()
+        {
+            EventsController.Events.Clear();
+            _eventGrid.Items.Dispatcher.Invoke(() => _eventGrid.Items.Refresh());
+        }
     }
 }

@@ -41,5 +41,25 @@ namespace SAS.Forms
                 }
             }
         }
+
+        private void CheckBox_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox cb)
+            {
+                if (cb.IsChecked == true)
+                {
+                    MainForm.Main.NavigationUIVisibility = NavigationUIVisibility.Visible;
+                }
+                else if (cb.IsChecked == false)
+                {
+                    MainForm.Main.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+                }
+            }
+        }
+
+        private void ClearHistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            History.EventsController.ClearData();
+        }
     }
 }
