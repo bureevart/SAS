@@ -42,7 +42,7 @@ namespace SAS{
             {
                 while (OnSimulate) 
                 {
-                    await Task.Delay(5500);
+                    await Task.Delay(10000);
                     if (OnSimulate){
                         var room = rooms[rnd.Next(rooms.ToArray().Length)];
                         room.TriggerAlarm();
@@ -53,13 +53,13 @@ namespace SAS{
             {
                 while (OnSimulate) 
                 {
-                    await Task.Delay(2000);
+                    await Task.Delay(12000);
 
                     if (OnSimulate){
                         OnDestroy = true;
                         var room = rooms[rnd.Next(rooms.ToArray().Length)];
                         room.DestroySensor();
-                        await Task.Delay(3000);
+                        await Task.Delay(2000);
                     }
                 }
             });
@@ -75,7 +75,19 @@ namespace SAS{
                         });
                     }
                 }
-            });    
+            });
+            _ = Task.Run(async () =>
+            {
+                while (OnSimulate)
+                {
+                    await Task.Delay(15000);
+                    if (OnSimulate){
+                        var room = rooms[rnd.Next(rooms.ToArray().Length)];
+                        room.BreakButton();
+                        await Task.Delay(3000);
+                    }
+                }
+            }); 
         }
     }
 }

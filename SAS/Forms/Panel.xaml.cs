@@ -124,7 +124,12 @@ namespace SAS.Forms
         private async void DispatcherTimer_Tick(object? sender, EventArgs e)
         {
             if(currentRoom == null) { return; }
-            
+            if(currentRoom.IsButtonBroken){
+                SetAlarmButton.Content = "Вызвать бригаду рабочих";
+            }
+            else{
+                SetAlarmButton.Content = "Поставить на сигнализацию";
+            }
             switch (currentRoom.SensorStatus)
             {
                 case SensorStatusses.Off:
@@ -191,8 +196,12 @@ namespace SAS.Forms
         private void SetAlarmButton_Click(object sender, RoutedEventArgs e)
         {
             if (currentRoom == null) { return; }
-
-            currentRoom.SetAlarm();
+            if (currentRoom.IsButtonBroken){
+                currentRoom.FixButton();
+            }
+            else{
+                currentRoom.SetAlarm();
+            }
         }
 
         public void PanelEllipseStatus(object sender, EventArgs e)
@@ -239,7 +248,7 @@ namespace SAS.Forms
                 if (!r.PowerStatus){
                     statusText = "Выключена";
                 }
-                if (r.SensorStatus == SensorStatusses.Error){
+                if (r.SensorStatus == SensorStatusses.Error || r.IsButtonBroken){
                     statusText = "Поломка";
                 }
                 DisplayLabel.Dispatcher.Invoke(new Action(() => {

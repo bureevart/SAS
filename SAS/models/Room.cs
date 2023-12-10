@@ -12,6 +12,7 @@ namespace SAS
         public bool AlarmStatus { get => SensorStatus == SensorStatusses.Alarm; }
         public bool IsAlarmSet{ get; set; }
         public bool NetworkStatus => PowerStatus && IsAlarmSet;
+        public bool IsButtonBroken { get; set; } = false;
         public Label DisplayLabel { get; }
         public static event EventHandler<EventArgs> RedrawEllispse;
         public static event EventHandler<EventArgs> RewriteLabel;
@@ -28,7 +29,6 @@ namespace SAS
             SensorStatus = sensorStatus;
             PowerStatus = powerStatus;
             DisplayLabel = displaylabel;
-            
         }
 
         public async void TriggerAlarm(){
@@ -108,7 +108,25 @@ namespace SAS
         }
         public async void BreakButton()
         {
-            //if() 
+            if (SensorStatus == SensorStatusses.Error || SensorStatus == SensorStatusses.Off || SensorStatus == SensorStatusses.Alarm || IsButtonBroken == true)
+            {
+                return;
+            }
+            IsButtonBroken = true;
+            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Кнопка сломана!");
+            RewriteLabel.Invoke(this, new EventArgs());
+            RedrawEllispse.Invoke(this, new EventArgs());   
+        }
+        public async void FixButton()
+        {
+            if (IsButtonBroken == false)
+            {
+                return;
+            }
+            IsButtonBroken = false;
+            History.EventsController.AddEvent(this, "Код комнаты: " + Code + " - Состояние: Кнопка восстановлена!");
+            RewriteLabel.Invoke(this, new EventArgs());
+            RedrawEllispse.Invoke(this, new EventArgs());
         }
     }
 }
