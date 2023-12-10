@@ -5,10 +5,33 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SAS.Forms"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="589" d:DesignWidth="1130"
       Title="History">
 
-    <Grid>
-        
+    <Grid Background="Gray">
+        <DataGrid x:Name="EventGrid" HorizontalAlignment="Center" Height="352" VerticalAlignment="Center" Width="1026" d:ItemsSource="{d:SampleData ItemCount=5}" Background="LightGray" BorderThickness="3" BorderBrush="White" IsReadOnly="True">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Gray"/>
+
+
+            </DataGrid.Resources>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="FontSize" Value="20"/>
+                    <Setter Property="Background" Value="LightGray"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+        <Label Content="Журнал событий" HorizontalAlignment="Left" FontSize="30" Height="50" Margin="52,36,0,0" VerticalAlignment="Top" Width="280"/>
+
     </Grid>
 </Page>
